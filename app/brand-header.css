@@ -1,0 +1,1326 @@
+.topline {
+  position: relative;
+  overflow: hidden;
+  padding: 15px 12px;
+  background: linear-gradient(110deg, #17120f, #493629 48%, #17120f);
+  background-size: 200% 100%;
+  color: #fff3df;
+  font-size: clamp(15px, 2vw, 20px);
+  font-weight: 700;
+  text-shadow: 0 1px 12px rgb(232 213 180 / 30%);
+  animation: topline-glow 6s ease-in-out infinite;
+}
+
+.topline {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.header {
+  position: static;
+}
+
+.toplineOrder {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 5px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--ink);
+  font: 800 0.88em/1.35 "DM Sans", sans-serif;
+  letter-spacing: 0.3px;
+  text-shadow: none;
+  vertical-align: middle;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.toplineOrder:hover {
+  transform: translateY(-1px);
+  background: var(--theme-heading, #f8e15a);
+}
+
+.topline::after {
+  position: absolute;
+  inset: 0 auto 0 -45%;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 12%), transparent);
+  content: "";
+  pointer-events: none;
+  transform: skewX(-20deg);
+  animation: topline-shimmer 5s ease-in-out 1s infinite;
+}
+
+.topline span {
+  display: inline-block;
+  color: #f2c77f;
+  text-shadow: 0 0 12px rgb(242 199 127 / 80%);
+  animation: topline-sparkle 1.8s ease-in-out infinite;
+}
+
+@keyframes topline-glow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes topline-shimmer {
+  0%,
+  55% {
+    transform: translateX(0) skewX(-20deg);
+  }
+
+  100% {
+    transform: translateX(550%) skewX(-20deg);
+  }
+}
+
+@keyframes topline-sparkle {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(0.9) rotate(-12deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(12deg);
+  }
+}
+
+.header {
+  justify-content: center;
+}
+
+.hero {
+  justify-content: center;
+  padding-right: 6%;
+  padding-left: 6%;
+  text-align: center;
+}
+
+.heroBg {
+  background:
+    linear-gradient(rgba(17, 12, 9, 0.72), rgba(17, 12, 9, 0.72)),
+    url("") center 42% / cover;
+}
+
+.heroContent {
+  width: min(100%, 720px);
+  max-width: 720px;
+}
+
+.detailPhoto {
+  height: auto;
+  background: transparent;
+}
+
+.detailPhoto img {
+  height: auto;
+  object-fit: contain;
+}
+
+.whyImage {
+  position: relative;
+  overflow: hidden;
+}
+
+.whyCarousel {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.whyCarouselTrack {
+  position: absolute;
+  inset: 0;
+}
+
+.whyCarouselTrack img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.025);
+  transition: opacity 600ms ease, transform 1800ms ease;
+}
+
+.whyCarouselTrack img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.carouselArrow {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 50%;
+  background: rgb(23 18 15 / 68%);
+  color: #fff3df;
+  font: 32px/1 Georgia, serif;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.carouselArrow:hover {
+  transform: translateY(-50%) scale(1.08);
+  border-color: #e8d5b4;
+  background: #493629;
+}
+
+.carouselPrevious {
+  left: 18px;
+}
+
+.carouselNext {
+  right: 18px;
+}
+
+.carouselDots {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+
+.carouselDots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid #fff3df;
+  border-radius: 50%;
+  background: rgb(23 18 15 / 45%);
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.carouselDots button[aria-current="true"] {
+  transform: scale(1.3);
+  background: #f2c77f;
+}
+
+.heroPrice {
+  display: grid;
+  justify-content: center;
+  min-height: 58px;
+}
+
+.heroPriceOffer {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 500ms ease, transform 500ms ease;
+  pointer-events: none;
+}
+
+.heroPriceOffer.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  animation: hero-offer-enter 500ms ease both;
+}
+
+.heroPriceOffer small {
+  color: #fff3df;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+@keyframes hero-offer-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.heroPrice strong {
+  display: inline-block;
+  animation: hero-price-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes hero-price-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 0 rgb(241 214 169 / 0%);
+  }
+
+  50% {
+    transform: scale(1.1);
+    text-shadow: 0 0 16px rgb(241 214 169 / 60%);
+  }
+}
+
+.codNote {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.timer {
+  gap: 14px;
+}
+
+.timeUnit {
+  min-width: 92px;
+  padding: 14px 12px;
+}
+
+.timeUnit b {
+  font-size: 36px;
+}
+
+.timeUnit span {
+  font-size: 12px;
+}
+
+.sizeNote {
+  margin: -10px 0 20px;
+  color: #806b53;
+  font: 12px/1.7 "Noto Serif Bengali", serif;
+}
+
+.pieceSelections {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.pieceSelection {
+  min-width: 0;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid #e1d4c2;
+  background: #fffdf9;
+}
+
+.pieceSelection legend {
+  padding: 0 8px;
+  color: #493629;
+  font: 700 14px "Noto Serif Bengali", serif;
+}
+
+.pieceOptionLabel {
+  display: block;
+  margin: 0 0 10px;
+  color: #5d5145;
+  font: 12px "Noto Serif Bengali", serif;
+}
+
+.pieceSelection .sizes,
+.pieceSelection .colorChoices {
+  margin-bottom: 16px;
+}
+
+.pieceSelection .colorChoices {
+  margin-bottom: 0;
+}
+
+.selectionError {
+  margin: -8px 0 20px;
+  color: #a53c2e;
+  font: 13px/1.7 "Noto Serif Bengali", serif;
+}
+
+.summaryItemDetails {
+  margin: 8px 0;
+  padding: 8px 12px;
+  border-left: 2px solid var(--gold);
+  background: #f5efe5;
+}
+
+.summaryItemDetails .summaryLine {
+  padding: 5px 0;
+  border-bottom: 0;
+  color: #665748;
+  font: 11px/1.7 "Noto Serif Bengali", serif;
+}
+
+.countdownMessage .eyebrow {
+  color: #f2c77f;
+  animation: countdown-label-glow 2.4s ease-in-out infinite;
+}
+
+.countdownMessage h2 {
+  width: fit-content;
+  max-width: 100%;
+  background: linear-gradient(110deg, #f4e7d4 20%, #f2c77f 42%, #fff8e9 50%, #f2c77f 58%, #f4e7d4 80%);
+  background-size: 220% auto;
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(20px, 2.5vw, 29px);
+  font-weight: 700;
+  line-height: 1.65;
+  -webkit-background-clip: text;
+  animation: countdown-text-shimmer 4s ease-in-out infinite;
+}
+
+.offerSection .sectionTitle h2 {
+  animation: offer-title-pulse 2.8s ease-in-out infinite;
+}
+
+.offerSection .sectionTitle h2 em {
+  display: inline-block;
+  color: #a77e49;
+  text-shadow: 0 0 12px rgb(167 126 73 / 20%);
+}
+
+.offerSection .sectionTitle > p:last-child {
+  animation: offer-copy-pulse 2.8s ease-in-out 350ms infinite;
+}
+
+.offerSection .oldPrice {
+  margin: 0;
+  color: #d7b78b;
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-weight: 700;
+  text-decoration: line-through;
+  text-decoration-color: #e58b71;
+  text-decoration-thickness: 2px;
+}
+
+.offerSection .dealCard:not(.featured) .oldPrice {
+  color: #8d7d6c;
+}
+
+.offerSection .dealPrice .offerLabel {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 8px;
+  padding: 5px 12px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--ink);
+  font: 700 14px/1.5 "Noto Serif Bengali", serif;
+  letter-spacing: 0.3px;
+  box-shadow: 0 0 14px rgb(231 175 59 / 30%);
+}
+
+.offerSection .dealPricePulse {
+  animation: offer-price-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes offer-price-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 0 rgb(167 126 73 / 0%);
+  }
+
+  50% {
+    transform: scale(1.12);
+    text-shadow: 0 0 14px rgb(167 126 73 / 40%);
+  }
+}
+
+@keyframes offer-title-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.055);
+  }
+}
+
+@keyframes offer-copy-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+@keyframes countdown-text-shimmer {
+  0%,
+  100% {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 2px rgb(242 199 127 / 18%));
+  }
+
+  50% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 8px rgb(242 199 127 / 48%));
+  }
+}
+
+@keyframes countdown-label-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 3px rgb(242 199 127 / 20%);
+  }
+
+  50% {
+    text-shadow: 0 0 10px rgb(242 199 127 / 65%);
+  }
+}
+
+.brand {
+  gap: 12px;
+  animation: brand-entrance 800ms ease-out both;
+}
+
+.brand img {
+  animation: brand-float 5s ease-in-out 800ms infinite;
+}
+
+@keyframes brand-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes brand-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topline,
+  .topline::after,
+  .topline span,
+  .countdownMessage .eyebrow,
+  .countdownMessage h2,
+  .offerSection .sectionTitle h2,
+  .offerSection .sectionTitle > p:last-child,
+  .offerSection .dealPricePulse,
+  .heroPrice strong,
+  .brand,
+  .brand img {
+    animation: none;
+  }
+
+  .heroPriceOffer {
+    transition: none;
+  }
+
+  .heroPriceOffer.active {
+    animation: none;
+  }
+
+  .whyCarouselTrack img,
+  .carouselArrow,
+  .carouselDots button {
+    transition: none;
+  }
+
+  .countdownMessage h2 {
+    background: none;
+    color: #f2c77f;
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+@media (max-width: 650px) {
+  .timer {
+    gap: 8px;
+  }
+
+  .timeUnit {
+    min-width: 68px;
+    padding: 12px 8px;
+  }
+
+  .timeUnit b {
+    font-size: 28px;
+  }
+}
+
+:root {
+  --ink: #130f0b;
+  --brown: #4d4845;
+  --gold: #e7af3b;
+  --champ: #f8e15a;
+  --ivory: #130f0b;
+  --muted: #c1ad88;
+  --theme-border: #824f2a;
+  --theme-surface: #4d4845;
+  --theme-heading: #f8e15a;
+  --theme-secondary: #c1ad88;
+}
+
+body,
+.header,
+.offerSection,
+.detailsSection,
+.orderSection {
+  background-color: var(--ink);
+  color: var(--theme-secondary);
+}
+
+.header {
+  border-color: var(--theme-border);
+}
+
+.brand,
+.sectionTitle h2,
+.whyText h2,
+.urgency h2,
+.formMain h3,
+.summary h3,
+.detailCopy h3,
+.dealCard h3,
+.countdownBand h2,
+.qualityGrid b {
+  color: var(--theme-heading);
+}
+
+.brand small,
+.footerBrand small,
+.eyebrow,
+.sectionTitle > p:last-child,
+.whyText > p:not(.eyebrow),
+.whyText li,
+.detailCopy > p,
+.specs,
+.field,
+.pieceOptionLabel,
+.pieceSelection legend,
+.summaryLine,
+.returnText {
+  color: var(--theme-secondary);
+}
+
+.topline {
+  background-image: linear-gradient(110deg, var(--ink), var(--theme-surface) 48%, var(--ink));
+  color: var(--theme-heading);
+}
+
+.topline span,
+.hero h1 em,
+.heroPrice strong,
+.timer .timeUnit b,
+.urgency h2 em,
+.sectionTitle h2 em,
+.whyText h2 em {
+  color: var(--theme-heading);
+}
+
+.hero {
+  background-color: var(--ink);
+}
+
+.heroBg {
+  background:
+    linear-gradient(rgba(19, 15, 11, 0.78), rgba(19, 15, 11, 0.78)),
+    url("/5.jpeg") center 42% / cover;
+}
+
+.heroBangla,
+.codNote,
+.heroPrice del,
+.heroPrice small,
+.countdownBand,
+.urgency {
+  color: var(--theme-secondary);
+}
+
+.countdownBand,
+.whySection,
+.urgency {
+  background-color: var(--ink);
+}
+
+.timeUnit,
+.dealCard,
+.dealCard.featured,
+.formMain,
+.summary,
+.pieceSelection {
+  border-color: var(--theme-border);
+  background-color: var(--theme-surface);
+  color: var(--theme-secondary);
+}
+
+.dealCard.featured {
+  border-width: 2px;
+}
+
+.dealTag,
+.featured .dealTag {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.dealPrice,
+.featured .dealPrice,
+.offerSection .oldPrice,
+.offerSection .dealCard:not(.featured) .oldPrice,
+.offerSection .featured .oldPrice {
+  color: var(--theme-heading);
+}
+
+.dealCard small,
+.oldPrice {
+  color: var(--theme-secondary);
+}
+
+.goldBtn,
+.dealCard button,
+.featured button {
+  border: 1px solid var(--theme-border);
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.goldBtn:hover,
+.dealCard button:hover,
+.featured button:hover {
+  background: var(--theme-heading);
+  color: var(--ink);
+}
+
+.formMain,
+.summary {
+  background-color: var(--theme-surface);
+}
+
+.choice,
+.pieceSelection,
+.size,
+.color,
+.shipChoice,
+.quantityRow,
+.field input,
+.field textarea,
+.field select,
+.summaryItemDetails,
+.qualityGrid div {
+  border-color: var(--theme-border);
+}
+
+.choice,
+.pieceSelection,
+.summaryItemDetails,
+.qualityGrid div {
+  background-color: var(--ink);
+  color: var(--theme-secondary);
+}
+
+.choice.selected,
+.color.active {
+  border-color: var(--gold);
+  background-color: #3b2b18;
+}
+
+.choiceTitle,
+.choice b,
+.pieceSelection legend,
+.pieceOptionLabel,
+.field {
+  color: var(--theme-secondary);
+}
+
+.choice input,
+.size input,
+.color input,
+.shipChoice input {
+  accent-color: var(--gold);
+}
+
+.size {
+  color: var(--theme-secondary);
+}
+
+.size.active {
+  border-color: var(--gold);
+  background-color: var(--gold);
+  color: var(--ink);
+}
+
+.color.active {
+  color: var(--theme-heading);
+}
+
+.field input,
+.field textarea,
+.field select {
+  background: var(--ink);
+  color: #fff3df;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--theme-secondary);
+}
+
+.shipChoice.chosen {
+  border-color: var(--gold);
+  background: #3b2b18;
+  color: var(--theme-heading);
+}
+
+.summaryItemDetails {
+  border-left-color: var(--gold);
+}
+
+.summaryItemDetails .summaryLine,
+.summaryTotal,
+.codBox b {
+  color: var(--theme-heading);
+}
+
+.codBox b {
+  color: var(--ink);
+}
+
+.whyText li {
+  border-color: var(--theme-border);
+}
+
+.whyText li::before {
+  color: var(--gold);
+}
+
+.carouselArrow {
+  border-color: var(--gold);
+  background: rgb(19 15 11 / 85%);
+  color: var(--theme-heading);
+}
+
+.carouselArrow:hover,
+.carouselDots button[aria-current="true"] {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.carouselDots button {
+  border-color: var(--theme-heading);
+}
+
+.sizeNote,
+.summaryItemDetails .summaryLine {
+  color: var(--theme-secondary);
+}
+
+.countdownMessage .eyebrow {
+  color: var(--theme-heading);
+}
+
+.countdownMessage h2 {
+  background-image: linear-gradient(110deg, #fff3df 20%, var(--theme-heading) 42%, #fffbe0 50%, var(--theme-heading) 58%, #fff3df 80%);
+}
+
+.offerSection .sectionTitle h2 em {
+  color: var(--theme-heading);
+}
+
+.offerSection .oldPrice {
+  text-decoration-color: var(--gold);
+}
+
+.orderReturnNotice {
+  max-width: 1150px;
+  margin: 24px auto 0;
+  padding: 18px 22px;
+  border: 1px solid var(--gold);
+  border-left-width: 6px;
+  border-radius: 6px;
+  background: var(--theme-surface);
+  color: var(--theme-heading);
+  font: 700 16px/1.8 "Noto Serif Bengali", serif;
+  text-align: center;
+  box-shadow: 0 0 18px rgb(231 175 59 / 18%);
+}
+
+footer {
+  background: var(--ink);
+  color: var(--theme-secondary);
+}
+
+footer .footerBrand {
+  color: var(--theme-heading);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdownMessage h2 {
+    color: var(--theme-heading);
+  }
+}
+
+.topline {
+  font-size: clamp(18px, 2.2vw, 22px);
+}
+
+.eyebrow {
+  font-size: 12px;
+}
+
+.heroBangla {
+  font-size: 18px;
+}
+
+.heroPrice {
+  min-height: 64px;
+}
+
+.heroPriceOffer {
+  gap: 12px;
+}
+
+.codNote,
+.sectionTitle > p:last-child,
+.whyText > p:not(.eyebrow),
+.whyText li,
+.detailCopy > p,
+.assurance {
+  font-size: 15px;
+}
+
+.countdownBand h2 {
+  font-size: 24px;
+}
+
+.timeUnit span {
+  font-size: 14px;
+}
+
+.dealTag,
+.featured .dealTag {
+  font-size: 13px;
+}
+
+.dealCard h3 {
+  font-size: 20px;
+}
+
+.dealCard small {
+  font-size: 13px;
+}
+
+.dealCard button,
+.goldBtn {
+  font-size: 15px;
+}
+
+.formMain h3,
+.summary h3 {
+  font-size: 19px;
+}
+
+.choice {
+  font-size: 15px;
+}
+
+.choiceTitle {
+  font-size: 15px;
+}
+
+.choice b {
+  font-size: 15px;
+}
+
+.size,
+.color {
+  font-size: 14px;
+}
+
+.pieceOptionLabel,
+.sizeNote,
+.field,
+.shipChoice,
+.summaryLine,
+.returnText {
+  font-size: 14px;
+}
+
+.field input,
+.field textarea,
+.field select {
+  font-size: 16px;
+}
+
+.summaryItemDetails .summaryLine {
+  font-size: 13px;
+}
+
+.specs {
+  font-size: 14px;
+}
+
+footer,
+footer > small {
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .heroBangla {
+    font-size: 16px;
+  }
+
+  .codNote,
+  .sectionTitle > p:last-child,
+  .whyText > p:not(.eyebrow),
+  .whyText li,
+  .detailCopy > p,
+  .assurance {
+    font-size: 14px;
+  }
+
+  .countdownBand h2 {
+    font-size: 21px;
+  }
+
+  main {
+    text-align: center;
+  }
+
+  .brand,
+  .heroContent,
+  .countdownMessage,
+  .dealCard,
+  .whyText,
+  .detailCopy,
+  .formMain,
+  .summary,
+  footer {
+    text-align: center;
+  }
+
+  .heroPriceOffer,
+  .quantityRow {
+    justify-content: center;
+  }
+
+  .quantityRow {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .choice {
+    text-align: center;
+  }
+
+  .pieceOptionLabel,
+  .field {
+    text-align: center;
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    text-align: center;
+  }
+
+  .shipChoice {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .summaryLine {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+  }
+
+  .specs {
+    padding-left: 0;
+    list-style-position: inside;
+    text-align: center;
+  }
+
+  .qualityGrid {
+    text-align: center;
+  }
+}
+
+.goldBtn {
+  border: 2px solid var(--theme-heading);
+  border-bottom: 5px solid var(--theme-border);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 45%),
+    0 5px 0 var(--theme-border),
+    0 9px 16px rgb(0 0 0 / 35%);
+  transform: translateY(0);
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.goldBtn:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 50%),
+    0 6px 0 var(--theme-border),
+    0 12px 20px rgb(0 0 0 / 42%);
+  transform: translateY(-2px);
+}
+
+.goldBtn:active {
+  box-shadow:
+    inset 0 2px 4px rgb(0 0 0 / 18%),
+    0 1px 0 var(--theme-border),
+    0 3px 7px rgb(0 0 0 / 30%);
+  transform: translateY(3px);
+}
+
+.orderError {
+  padding: 12px;
+  border: 1px solid #e58b71;
+  border-radius: 6px;
+  background: #3a211b;
+  color: #ffe0d6;
+  font: 14px/1.7 "Noto Serif Bengali", serif;
+  text-align: center;
+}
+
+.placeOrder:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
+}
+
+@media (max-width: 650px) {
+  main :is(h1, h2, h3, p, li, label, legend, span, small, strong, b, a, button, del) {
+    text-align: center;
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    text-align: center;
+  }
+
+  .summaryLine,
+  .shipChoice,
+  .quantityRow {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+:root {
+  --minimum-font-size: 18px;
+}
+
+body {
+  font-size: var(--minimum-font-size);
+}
+
+.topline {
+  font-size: clamp(21.6px, 2.64vw, 26.4px);
+}
+
+.toplineOrder {
+  font-size: 1.056em;
+}
+
+.brand,
+.footerBrand,
+.footerBrand span {
+  font-size: 22.8px;
+}
+
+.hero h1 {
+  font-size: clamp(52.8px, 7.2vw, 91.2px);
+}
+
+.heroBangla {
+  font-size: 21.6px;
+}
+
+.heroPrice strong {
+  font-size: 38.4px;
+}
+
+.countdownBand h2 {
+  font-size: clamp(24px, 3vw, 34.8px);
+}
+
+.timeUnit b {
+  font-size: 43.2px;
+}
+
+.sectionTitle h2,
+.whyText h2,
+.urgency h2 {
+  font-size: clamp(36px, 4.8vw, 55.2px);
+}
+
+.dealCard h3 {
+  font-size: 24px;
+}
+
+.dealPrice {
+  font-size: 37.2px;
+}
+
+.offerSection .oldPrice {
+  font-size: clamp(28.8px, 2.88vw, 36px);
+}
+
+.detailCopy h3 {
+  font-size: 26.4px;
+}
+
+.orderReturnNotice {
+  font-size: 19.2px;
+}
+
+.heroStamp,
+.heroStamp b,
+.brand small,
+.footerBrand small,
+.header nav,
+.headerOrder,
+.eyebrow,
+.heroPrice small,
+.goldBtn,
+.codNote,
+.timeUnit span,
+.sectionTitle > p:last-child,
+.dealTag,
+.oldPrice,
+.dealCard small,
+.dealCard button,
+.whyText > p:not(.eyebrow),
+.whyText li,
+.detailCopy > p,
+.qualityGrid b,
+.qualityGrid span,
+.specs,
+.urgency > p:not(.eyebrow),
+.urgency .assurance,
+.formMain h3,
+.summary h3,
+.choice,
+.choiceTitle,
+.choice del,
+.choice b,
+.quantityRow,
+.size,
+.color,
+.field,
+.field input,
+.field textarea,
+.field select,
+.shipChoice,
+.summaryLine,
+.summaryTotal,
+.summaryItemDetails .summaryLine,
+.codBox b,
+.codBox span,
+.placeOrder,
+.formSuccess,
+.orderError,
+.returnText,
+footer,
+footer > p,
+footer > small,
+.socialLinks a,
+.carouselArrow,
+.sizeNote,
+.pieceSelection legend,
+.pieceOptionLabel,
+.selectionError,
+.offerSection .dealPrice .offerLabel {
+  font-size: var(--minimum-font-size);
+}
+
+.heroStamp,
+.heroStamp b,
+.carouselArrow {
+  font-size: 18px;
+}
+
+.field input,
+.field textarea,
+.field select,
+.orderReturnNotice {
+  font-size: 19.2px;
+}
+
+@media (max-width: 650px) {
+  .brand,
+  .footerBrand,
+  .footerBrand span {
+    font-size: 18px;
+  }
+
+  .hero h1 {
+    font-size: 57.6px;
+  }
+
+  .heroBangla {
+    font-size: 19.2px;
+  }
+
+  .heroPrice strong {
+    font-size: 32.4px;
+  }
+
+  .countdownBand h2 {
+    font-size: 25.2px;
+  }
+
+  .timeUnit b {
+    font-size: 24px;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.socialLinks a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.socialLinks svg {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+}
