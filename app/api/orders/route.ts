@@ -191,16 +191,6 @@ export async function POST(request: Request) {
     // Read response only once
     const responseText = await response.text();
 
-    console.log(
-      "Google Apps Script Status:",
-      response.status
-    );
-
-    console.log(
-      "Google Apps Script Response:",
-      responseText
-    );
-
     let result: unknown;
 
     try {
